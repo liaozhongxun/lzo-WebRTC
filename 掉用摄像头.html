@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button class="button">播放</button>
+        <video id="video" class="video"></video>
+    </body>
+    <script>
+        let oVideo = document.querySelector('.video');
+        let oBideo = document.querySelector('.button');
+        let init = async () => {
+            const steam = await navigator.mediaDevices.getUserMedia({
+                video:{
+                    width:30,
+                    height:30
+                }
+            })
+            oVideo.srcObject = steam;
+            oVideo.play();
+        };
+
+        oBideo.addEventListener("click",()=>{
+            init();
+        })
+    </script>
+</html>
